@@ -21,37 +21,7 @@ namespace Publishing.Data
 
             return result;
         }
-
-        public List<DataSpace> GetThemePrice()
-        {
-            List<DataSpace> data = new List<DataSpace>();
-            Storage storage = new Storage();
-            data = storage.Load();
-
-            var result = data
-                .ToList();
-
-        //    var result = data
-        //        .Select(info => info.Theme && info.Aver)
-        //        .ToList() as List<double>;
-
-
-        //    //var price = data
-        //    //    .Where(info => info.Theme == theme)
-        //    //    .Select(x => x.Price)
-        //    //    .ToList() as List<double>;
-
-        //    //var amount = data
-        //    //    .Where(info => info.Theme == theme)
-        //    //    .Select(y => y.Circulation)
-        //    //    .ToList() as List<int>;
-
-        //    //var result = price.Select(x => x * amount.Select(y => y)).ToList();
-            
-            return result;
-        }
-
-        public List<DataSpace> SortByHigherCirculation()
+        public Dictionary<string, double> SortByHigherTotalSum()
         {
             List<DataSpace> data = new List<DataSpace>();
             Storage storage = new Storage();
@@ -62,11 +32,26 @@ namespace Publishing.Data
             //    .OrderBy(g => g.Price)
             //    .ToList();
 
-            var result = data
-                .OrderBy(m => m.TotalSum)
-                .ToList() as List<DataSpace>;
+            var res = data
+                .Select(info => info.Theme)
+                .Distinct()
+                .ToArray() as string[];
 
-            return result;
+            Dictionary<string, double> rest = new Dictionary<string, double>(res.Length);
+
+            for (int i= 0; i < res.Length; i++)
+            {
+                var mis = data
+                    .Where(info => info.Theme == res[i])
+                    .Select(g => g.TotalSum)
+                    .Sum();
+
+                rest.Add(res[i], mis);
+            };
+
+            rest.OrderBy(x => x.Value);
+
+            return rest;
         }
 
         public int AmountOfCirculationByTheme(string age)
@@ -100,18 +85,18 @@ namespace Publishing.Data
             return result;
         }
 
-        public List<DataSpace> ShareOfBooksAndMonth(int month)
-        {
-            List<DataSpace> data = new List<DataSpace>();
-            Storage storage = new Storage();
-            data = storage.Load();
+        //public List<DataSpace> ShareOfBooksAndMonth(int month)
+        //{
+        //    List<DataSpace> data = new List<DataSpace>();
+        //    Storage storage = new Storage();
+        //    data = storage.Load();
 
-            var result = data
-                .Where(info => info.MonthOfPublishing == month)
-                .ToList();
+        //    var result = data
+        //        .Where(info => info.MonthOfPublishing == month)
+        //        .ToList();
 
-            return result;
-        }
+        //    return result;
+        //}
 
         public int ShareOfYearForTheme(string theme, int month)
         {

@@ -16,7 +16,6 @@ namespace Publishing.Tests
         [TestMethod]
         public void GetInformation_Test()
         {
-            var data = storage.Load();
 
             string age = "В";
             string theme = "Х";
@@ -60,13 +59,31 @@ namespace Publishing.Tests
         }
 
         [TestMethod]
+        public void SortByHigherTotalSum_Test()
+        {
+            // Arrange
+
+            var result = 4;
+
+            // Action
+
+            var inf = Implementation.SortByHigherTotalSum();
+
+            // Assert
+
+            string expected = JsonConvert.SerializeObject(result);
+            string actually = JsonConvert.SerializeObject(inf);
+            Assert.AreEqual(expected, actually);
+        }
+
+        [TestMethod]
         public void AmountOfCirculationByTheme_Test()
         {
             string age = "В";
 
             // Arrange
 
-            int result = 68548;
+            int result = 81068;
 
             //Action
 
@@ -112,6 +129,27 @@ namespace Publishing.Tests
             // Action
 
             var inf = Implementation.ShareOfYearForTheme(theme, month);
+
+            // Assert
+
+            string expected = JsonConvert.SerializeObject(result);
+            string actually = JsonConvert.SerializeObject(inf);
+            Assert.AreEqual(expected, actually);
+        }
+
+        [TestMethod]
+        public void ShareOfThemeForMonth()
+        {
+            string theme = "У";
+            int month = 2;
+
+            // Arrage
+
+            int result = 25000;
+
+            // Action
+
+            var inf = Implementation.ShareOfThemeForMonth(theme, month);
 
             // Assert
 

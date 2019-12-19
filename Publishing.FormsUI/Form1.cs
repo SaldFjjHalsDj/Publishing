@@ -47,6 +47,7 @@ namespace Publishing.FormsUI
 
         private void SaveInfo_Click(object sender, EventArgs e)
         {
+
             string name = NameBox.Text;
             string book = BookBox.Text;
             string age = AgeComboBox.Text.ToString()[0].ToString();
@@ -83,9 +84,11 @@ namespace Publishing.FormsUI
             chartGraph.Series[0].Points.Clear();
             chartGraph.ChartAreas[0].AxisX.Interval = 1;
 
-            for(int i = 1; i <= 12; i++)
+            string[] month = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
+
+            for (int i = 1; i <= 12; i++)
             {
-                chartGraph.Series[0].Points.AddXY(i, implementation.AverageAmountOfBooksByMonth(i));
+                chartGraph.Series[0].Points.AddXY(month[i - 1], implementation.AverageAmountOfBooksByMonth(i));
             }
         }
 
@@ -94,11 +97,12 @@ namespace Publishing.FormsUI
             var data = storage.Load();
             chartPie.Series[0].Points.Clear();
 
-            string[] theme = { "У", "Х", "П", "И", "Н" };
+            string[] theme = { "Уxt", "Х", "П", "И", "Н" };
+
 
             for (int i = 0; i < 5; i++)
             {
-                chartPie.Series[0].Points.AddXY("", implementation.ShareOfYearForTheme(theme[i], int.Parse(comboBoxForMonth.Text)));
+                chartPie.Series[0].Points.AddXY(theme[i], implementation.ShareOfYearForTheme(theme[i][0].ToString(), int.Parse(comboBoxForMonth.Text)));
             }
         }
 
@@ -113,7 +117,7 @@ namespace Publishing.FormsUI
 
             string[] theme = { "У", "Х", "П", "И", "Н" };
 
-            string[] month = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
+            string[] month = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
 
 
             chartColumn.ChartAreas[0].AxisX.Interval = 1;
@@ -126,6 +130,30 @@ namespace Publishing.FormsUI
                 chartColumn.Series[3].Points.AddXY(month[i - 1], implementation.ShareOfThemeForMonth(theme[3], i));
                 chartColumn.Series[4].Points.AddXY(month[i - 1], implementation.ShareOfThemeForMonth(theme[4], i));
             }
+        }
+
+        private void buttonLoad_Click(object sender, EventArgs e)
+        {
+            Information.DataSource = storage.Load();
+            Information.AutoResizeColumns();
+        }
+
+        private void buttonCorrect_Click(object sender, EventArgs e)
+        {
+            var Inform = (List<DataSpace>)Information.DataSource;
+            if (Inform.Count == storage.Load().Count)
+            {
+                storage.Save(Inform);
+            }
+            else
+            {
+                MessageBox.Show("You need to save data");
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
