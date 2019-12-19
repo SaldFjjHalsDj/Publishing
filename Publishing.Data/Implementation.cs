@@ -63,13 +63,13 @@ namespace Publishing.Data
             //    .ToList();
 
             var result = data
-                .OrderBy(m => m.Aver)
+                .OrderBy(m => m.TotalSum)
                 .ToList() as List<DataSpace>;
 
             return result;
         }
 
-        public List<int> AmountOfCirculationByTheme(string age)
+        public int AmountOfCirculationByTheme(string age)
         {
             List<DataSpace> data = new List<DataSpace>();
             Storage storage = new Storage();
@@ -77,15 +77,13 @@ namespace Publishing.Data
 
             var result = data
                 .Where(info => info.Age == age)
-                .Select(g => g.Theme)
-                .Select(k => data.Select(m => m.Circulation)
-                .Sum())
-                .ToList() as List<int>;
+                .Select(m => m.Circulation)
+                .Sum();
 
             return result;
         }
 
-        public List<DataSpace> AverageAmountOfBooksByMonth(int month)
+        public int AverageAmountOfBooksByMonth(int month)
         {
             List<DataSpace> data = new List<DataSpace>();
             Storage storage = new Storage();
@@ -96,7 +94,8 @@ namespace Publishing.Data
             var result = data
                 .Where(info => info.MonthOfPublishing == month)
                 .Where(inf => inf.Theme == art)
-                .ToList() as List<DataSpace>;
+                .Select(m => m.Circulation)
+                .Sum();
 
             return result;
         }
@@ -120,9 +119,29 @@ namespace Publishing.Data
             Storage storage = new Storage();
             data = storage.Load();
 
+            var count = data
+                .Where(info => info.MonthOfPublishing == month)
+                .Select(im => im.Circulation)
+                .Sum();
+
             var result = data
                 .Where(info => info.Theme == theme)
                 .Where(inf => inf.MonthOfPublishing == month)
+                .Select(im => im.Circulation)
+                .Sum();
+
+            return int.Parse(Math.Truncate((result * 1.0 / count) * 100).ToString());
+        }
+
+        public int ShareOfThemeForMonth(string theme, int month)
+        {
+            List<DataSpace> data = new List<DataSpace>();
+            Storage storage = new Storage();
+            data = storage.Load();
+
+            var result = data
+                .Where(inf => inf.Theme == theme)
+                .Where(info => info.MonthOfPublishing == month)
                 .Select(im => im.Circulation)
                 .Sum();
 

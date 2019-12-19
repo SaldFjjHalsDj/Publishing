@@ -31,7 +31,7 @@ namespace Publishing.Data
         [DataMember]
         public int MonthOfPublishing { get; set; }
 
-        public double Aver
+        public double TotalSum
         {
 
             get
