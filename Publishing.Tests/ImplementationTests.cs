@@ -111,15 +111,27 @@ namespace Publishing.Tests
         [TestMethod]
         public void AverageAmountOfBooksByMonth_Test()
         {
-            int month = 3;
-
             // Arrage
 
-            int result = 1023;
+            Dictionary<int, int> result = new Dictionary<int, int>()
+            {
+                {1, 3560},
+                {2, 5230},
+                {3, 1023},
+                {4, 4000},
+                {5, 8030},
+                {6, 9870},
+                {7, 10000},
+                {8, 5000},
+                {9, 7000},
+                {10, 6500},
+                {11, 50000},
+                {12, 2300},
+            };
 
             // Action
 
-            var inf = Implementation.AverageAmountOfBooksByMonth(month);
+            var inf = Implementation.AverageAmountOfBooksByMonth();
 
             // Assert
 
@@ -131,7 +143,6 @@ namespace Publishing.Tests
         [TestMethod]
         public void ShareOfYearForTheme_Test()
         {
-            string theme = "У";
             int month = 2;
 
             // Arrage 
@@ -140,7 +151,7 @@ namespace Publishing.Tests
 
             // Action
 
-            var inf = Implementation.ShareOfYearForTheme(theme, month);
+            var inf = Implementation.ShareOfYearForTheme(month);
 
             // Assert
 

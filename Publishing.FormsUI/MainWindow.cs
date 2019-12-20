@@ -47,10 +47,10 @@ namespace Publishing.FormsUI
 
         private void SaveInfo_Click(object sender, EventArgs e)
         {
-
+            // if (AgeComboBox.Text != null && NameBox.Text != null && BookBox.Text != null && ThemeComboBox.Text != null && PriceBox.Text != null && CirculationBox.Text != null && MonthComboBox.Text != null)
             string name = NameBox.Text;
             string book = BookBox.Text;
-            string age = AgeComboBox.Text.ToString()[0].ToString();
+            var age = AgeComboBox.Text.ToString()[0].ToString();
             string theme = ThemeComboBox.Text.ToString()[0].ToString();
             double price = double.Parse(PriceBox.Text);
             int amount = int.Parse(CirculationBox.Text);
@@ -58,7 +58,7 @@ namespace Publishing.FormsUI
 
             List<DataSpace> space = new List<DataSpace>()
             {
-                new DataSpace 
+                new DataSpace
                 {
                     Author = name,
                     Book = book,
@@ -86,9 +86,11 @@ namespace Publishing.FormsUI
 
             string[] month = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
 
+            var result = implementation.AverageAmountOfBooksByMonth();
+
             for (int i = 1; i <= 12; i++)
             {
-                chartGraph.Series[0].Points.AddXY(month[i - 1], implementation.AverageAmountOfBooksByMonth(i));
+                chartGraph.Series[0].Points.AddXY(month[i - 1], result[i]);
             }
         }
 
@@ -97,12 +99,18 @@ namespace Publishing.FormsUI
             var data = storage.Load();
             chartPie.Series[0].Points.Clear();
 
-            string[] theme = { "У", "Х", "П", "И", "Н" };
+            string[] theme = data
+                .Where(inf => inf.MonthOfPublishing == int.Parse(comboBoxForMonth.Text))
+                .Select(x => x.Theme)
+                .Distinct()
+                .ToArray() as string[];
+
+            var result = implementation.ShareOfYearForTheme(int.Parse(comboBoxForMonth.Text));
 
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < theme.Length; i++)
             {
-                chartPie.Series[0].Points.AddXY(theme[i], implementation.ShareOfYearForTheme(theme[i][0].ToString(), int.Parse(comboBoxForMonth.Text)));
+               chartPie.Series[0].Points.AddXY(theme[i], result[theme[i]]);
             }
         }
 
@@ -177,6 +185,11 @@ namespace Publishing.FormsUI
             var inf = implementation.AmountOfCirculationByTheme().Select(i => new { Age = i.Key, Circulation = i.Value }).ToList();
             SecondInfo.DataSource = inf;
             SecondInfo.AutoResizeColumns();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

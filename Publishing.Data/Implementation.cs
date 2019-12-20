@@ -51,7 +51,7 @@ namespace Publishing.Data
             return result;
         }
 
-        public int AverageAmountOfBooksByMonth(int month)
+        public Dictionary<int, int> AverageAmountOfBooksByMonth()
         {
             List<DataSpace> data = new List<DataSpace>();
             Storage storage = new Storage();
@@ -59,11 +59,12 @@ namespace Publishing.Data
 
             string art = "И";
 
-            var result = data
-                .Where(info => info.MonthOfPublishing == month)
-                .Where(inf => inf.Theme == art)
-                .Select(m => m.Circulation)
-                .Sum();
+            Dictionary<int, int> result = data
+                .Where(m => m.Theme == art)
+                .GroupBy(inm => inm.MonthOfPublishing)
+                .Select(g => new { MonthOfPublishing = g.Key, Circulation = g.Sum(m => m.Circulation)})
+                .OrderBy(x => x.MonthOfPublishing)
+                .ToDictionary(key => key.MonthOfPublishing, value => value.Circulation);
 
             return result;
         }
@@ -81,7 +82,7 @@ namespace Publishing.Data
         //    return result;
         //}
 
-        public int ShareOfYearForTheme(string theme, int month)
+        public Dictionary<string, double> ShareOfYearForTheme(int month)
         {
             List<DataSpace> data = new List<DataSpace>();
             Storage storage = new Storage();
@@ -90,28 +91,39 @@ namespace Publishing.Data
             var count = data
                 .Where(info => info.MonthOfPublishing == month)
                 .Select(im => im.Circulation)
-                .Sum();
+                .Sum() ;
 
-            var result = data
-                .Where(info => info.Theme == theme)
-                .Where(inf => inf.MonthOfPublishing == month)
-                .Select(im => im.Circulation)
-                .Sum();
+            //var result = data
+            //    .Where(info => info.Theme == theme)
+            //    .Where(inf => inf.MonthOfPublishing == month)
+            //    .Select(im => im.Circulation)
+            //    .Sum();
 
-            return int.Parse(Math.Truncate((result * 1.0 / count) * 100).ToString());
+            Dictionary<string, double> result = data
+                .Where(m => m.MonthOfPublishing == month)
+                .GroupBy(inm => inm.Theme)
+                .Select(g => new { Theme = g.Key, Circulation = g.Sum(m => m.Circulation) * 100.0 / count})
+                .ToDictionary(key => key.Theme, value => value.Circulation);
+
+            return result;
         }
 
-        public int ShareOfThemeForMonth(string theme, int month)
+
+        // Все еще переписываю
+        public Dictionary<string, int> ShareOfThemeForMonth(string theme, int month)
         {
             List<DataSpace> data = new List<DataSpace>();
             Storage storage = new Storage();
             data = storage.Load();
 
             var result = data
-                .Where(inf => inf.Theme == theme)
-                .Where(info => info.MonthOfPublishing == month)
-                .Select(im => im.Circulation)
-                .Sum();
+                .GroupBy(m => m.Theme)
+                .Select(g => new { Theme = g.Key, Circulation = g.Sum(m => m.Circulation) })
+                .ToDictionary(key => key.Theme, value => value.Circulation);
+
+            var resul = data
+                .GroupBy(m => m.MonthOfPublishing);
+
 
             return result;
         }
