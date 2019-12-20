@@ -65,11 +65,11 @@ namespace Publishing.Tests
 
             Dictionary<string, double> result = new Dictionary<string, double>()
             {
-                {"П", 9172800.0},
-                {"Н", 26920800.0},
-                {"У", 37500000.0},
-                {"Х", 38454056.0 },
-                {"И", 216604547.0},
+                {"П", 41251200.0},
+                {"У", 63319200.0},
+                {"Х", 67052056.0},
+                {"Н", 79912800.0},
+                {"И", 263644547.0},
             };
 
             // Action
@@ -92,9 +92,9 @@ namespace Publishing.Tests
 
             Dictionary<string, int> result = new Dictionary<string, int>()
             {
-                {"Д", 12560},
-                {"В", 81068},
+                {"Д", 64960},
                 {"Ю", 116993},
+                {"В", 132348},
             };
 
             //Action
@@ -121,7 +121,7 @@ namespace Publishing.Tests
                 {4, 4000},
                 {5, 8030},
                 {6, 9870},
-                {7, 10000},
+                {7, 17000},
                 {8, 5000},
                 {9, 7000},
                 {10, 6500},
@@ -147,9 +147,16 @@ namespace Publishing.Tests
 
             // Arrage 
 
-            int result = 35;
+            Dictionary<string, double> result = new Dictionary<string, double>()
+            {
+                {"Х", 50.536013876645718},
+                {"И", 7.4359484744220437},
+                {"У", 35.54468678022009},
+                {"Н", 2.9004464412659594},
+                {"П", 3.5829044274461852},
+            };
 
-            // Action
+            // ActionЫ
 
             var inf = Implementation.ShareOfYearForTheme(month);
 

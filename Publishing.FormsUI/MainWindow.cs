@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +13,6 @@ namespace Publishing.FormsUI
 {
     public partial class Form1 : Form
     {
-
-        CultureInfo CultureInfo = new CultureInfo("ru-RU");
         Storage storage = new Storage();
         Implementation implementation = new Implementation();
 
