@@ -172,7 +172,7 @@ namespace Publishing.Tests
 
             // Action
 
-            var inf = Implementation.ShareOfThemeForMonth(theme, month);
+            var inf = Implementation.ShareOfThemeForMonth();
 
             // Assert
 

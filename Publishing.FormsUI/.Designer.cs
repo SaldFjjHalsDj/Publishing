@@ -31,17 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dataSpaceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
@@ -74,14 +70,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SaveInfo = new System.Windows.Forms.Button();
             this.Information = new System.Windows.Forms.DataGridView();
-            this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.themeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.circulationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monthOfPublishingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataSpaceBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.buttonGraph = new System.Windows.Forms.Button();
@@ -95,11 +83,18 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.buttonForColumn = new System.Windows.Forms.Button();
             this.chartColumn = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.themeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.circulationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monthOfPublishingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataSpaceBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataSpaceBindingSource)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SecondInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Information)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSpaceBindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartGraph)).BeginInit();
@@ -107,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartColumn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSpaceBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage1
@@ -144,7 +140,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(926, 610);
+            this.tabPage1.Size = new System.Drawing.Size(931, 616);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Основная информация";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -153,7 +149,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(305, 544);
+            this.button2.Location = new System.Drawing.Point(305, 446);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(242, 37);
             this.button2.TabIndex = 34;
@@ -187,7 +183,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(305, 440);
+            this.button1.Location = new System.Drawing.Point(305, 544);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(242, 37);
             this.button1.TabIndex = 31;
@@ -464,52 +460,6 @@
             this.Information.TabIndex = 0;
             this.Information.UseWaitCursor = true;
             // 
-            // authorDataGridViewTextBoxColumn
-            // 
-            this.authorDataGridViewTextBoxColumn.DataPropertyName = "Author";
-            this.authorDataGridViewTextBoxColumn.HeaderText = "Author";
-            this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
-            // 
-            // bookDataGridViewTextBoxColumn
-            // 
-            this.bookDataGridViewTextBoxColumn.DataPropertyName = "Book";
-            this.bookDataGridViewTextBoxColumn.HeaderText = "Book";
-            this.bookDataGridViewTextBoxColumn.Name = "bookDataGridViewTextBoxColumn";
-            // 
-            // ageDataGridViewTextBoxColumn
-            // 
-            this.ageDataGridViewTextBoxColumn.DataPropertyName = "Age";
-            this.ageDataGridViewTextBoxColumn.HeaderText = "Age";
-            this.ageDataGridViewTextBoxColumn.Name = "ageDataGridViewTextBoxColumn";
-            // 
-            // themeDataGridViewTextBoxColumn
-            // 
-            this.themeDataGridViewTextBoxColumn.DataPropertyName = "Theme";
-            this.themeDataGridViewTextBoxColumn.HeaderText = "Theme";
-            this.themeDataGridViewTextBoxColumn.Name = "themeDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // circulationDataGridViewTextBoxColumn
-            // 
-            this.circulationDataGridViewTextBoxColumn.DataPropertyName = "Circulation";
-            this.circulationDataGridViewTextBoxColumn.HeaderText = "Circulation";
-            this.circulationDataGridViewTextBoxColumn.Name = "circulationDataGridViewTextBoxColumn";
-            // 
-            // monthOfPublishingDataGridViewTextBoxColumn
-            // 
-            this.monthOfPublishingDataGridViewTextBoxColumn.DataPropertyName = "MonthOfPublishing";
-            this.monthOfPublishingDataGridViewTextBoxColumn.HeaderText = "MonthOfPublishing";
-            this.monthOfPublishingDataGridViewTextBoxColumn.Name = "monthOfPublishingDataGridViewTextBoxColumn";
-            // 
-            // dataSpaceBindingSource1
-            // 
-            this.dataSpaceBindingSource1.DataSource = typeof(Publishing.Data.DataSpace);
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -519,7 +469,7 @@
             this.tabControl1.Location = new System.Drawing.Point(-1, -1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(934, 636);
+            this.tabControl1.Size = new System.Drawing.Size(939, 642);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.UseWaitCursor = true;
             // 
@@ -555,12 +505,12 @@
             this.chartGraph.Legends.Add(legend4);
             this.chartGraph.Location = new System.Drawing.Point(6, 129);
             this.chartGraph.Name = "chartGraph";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series8.Legend = "Legend1";
-            series8.LegendText = "Изменение общего тиража книг по искусству за год";
-            series8.Name = "Series1";
-            this.chartGraph.Series.Add(series8);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.LegendText = "Изменение общего тиража книг по искусству за год";
+            series4.Name = "Series1";
+            this.chartGraph.Series.Add(series4);
             this.chartGraph.Size = new System.Drawing.Size(914, 473);
             this.chartGraph.TabIndex = 0;
             this.chartGraph.UseWaitCursor = true;
@@ -629,11 +579,11 @@
             this.chartPie.Legends.Add(legend5);
             this.chartPie.Location = new System.Drawing.Point(10, 6);
             this.chartPie.Name = "chartPie";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            this.chartPie.Series.Add(series9);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chartPie.Series.Add(series5);
             this.chartPie.Size = new System.Drawing.Size(667, 596);
             this.chartPie.TabIndex = 0;
             this.chartPie.UseWaitCursor = true;
@@ -645,7 +595,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(926, 610);
+            this.tabPage4.Size = new System.Drawing.Size(931, 616);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Столбиковая диаграмма";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -670,30 +620,61 @@
             this.chartColumn.Legends.Add(legend6);
             this.chartColumn.Location = new System.Drawing.Point(4, 59);
             this.chartColumn.Name = "chartColumn";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Series2";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Series3";
-            series13.ChartArea = "ChartArea1";
-            series13.Legend = "Legend1";
-            series13.Name = "Series4";
-            series14.ChartArea = "ChartArea1";
-            series14.Legend = "Legend1";
-            series14.Name = "Series5";
-            this.chartColumn.Series.Add(series10);
-            this.chartColumn.Series.Add(series11);
-            this.chartColumn.Series.Add(series12);
-            this.chartColumn.Series.Add(series13);
-            this.chartColumn.Series.Add(series14);
-            this.chartColumn.Size = new System.Drawing.Size(916, 545);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.LegendText = "Количество выпущенных книг по тематической группе за год";
+            series6.Name = "Series1";
+            this.chartColumn.Series.Add(series6);
+            this.chartColumn.Size = new System.Drawing.Size(919, 548);
             this.chartColumn.TabIndex = 0;
             this.chartColumn.Text = "chart1";
             this.chartColumn.UseWaitCursor = true;
+            // 
+            // authorDataGridViewTextBoxColumn
+            // 
+            this.authorDataGridViewTextBoxColumn.DataPropertyName = "Author";
+            this.authorDataGridViewTextBoxColumn.HeaderText = "Author";
+            this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
+            // 
+            // bookDataGridViewTextBoxColumn
+            // 
+            this.bookDataGridViewTextBoxColumn.DataPropertyName = "Book";
+            this.bookDataGridViewTextBoxColumn.HeaderText = "Book";
+            this.bookDataGridViewTextBoxColumn.Name = "bookDataGridViewTextBoxColumn";
+            // 
+            // ageDataGridViewTextBoxColumn
+            // 
+            this.ageDataGridViewTextBoxColumn.DataPropertyName = "Age";
+            this.ageDataGridViewTextBoxColumn.HeaderText = "Age";
+            this.ageDataGridViewTextBoxColumn.Name = "ageDataGridViewTextBoxColumn";
+            // 
+            // themeDataGridViewTextBoxColumn
+            // 
+            this.themeDataGridViewTextBoxColumn.DataPropertyName = "Theme";
+            this.themeDataGridViewTextBoxColumn.HeaderText = "Theme";
+            this.themeDataGridViewTextBoxColumn.Name = "themeDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // circulationDataGridViewTextBoxColumn
+            // 
+            this.circulationDataGridViewTextBoxColumn.DataPropertyName = "Circulation";
+            this.circulationDataGridViewTextBoxColumn.HeaderText = "Circulation";
+            this.circulationDataGridViewTextBoxColumn.Name = "circulationDataGridViewTextBoxColumn";
+            // 
+            // monthOfPublishingDataGridViewTextBoxColumn
+            // 
+            this.monthOfPublishingDataGridViewTextBoxColumn.DataPropertyName = "MonthOfPublishing";
+            this.monthOfPublishingDataGridViewTextBoxColumn.HeaderText = "MonthOfPublishing";
+            this.monthOfPublishingDataGridViewTextBoxColumn.Name = "monthOfPublishingDataGridViewTextBoxColumn";
+            // 
+            // dataSpaceBindingSource1
+            // 
+            this.dataSpaceBindingSource1.DataSource = typeof(Publishing.Data.DataSpace);
             // 
             // Form1
             // 
@@ -709,7 +690,6 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SecondInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Information)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSpaceBindingSource1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartGraph)).EndInit();
@@ -717,6 +697,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartColumn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSpaceBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }

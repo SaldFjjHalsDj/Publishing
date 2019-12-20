@@ -118,24 +118,19 @@ namespace Publishing.FormsUI
         {
             var data = storage.Load();
             chartColumn.Series[0].Points.Clear();
-            chartColumn.Series[1].Points.Clear();
-            chartColumn.Series[2].Points.Clear();
-            chartColumn.Series[3].Points.Clear();
-            chartColumn.Series[4].Points.Clear();
 
-            string[] theme = { "У", "Х", "П", "И", "Н" };
+            string[] theme = data
+                .Select(x => x.Theme)
+                .Distinct()
+                .ToArray() as string[];
 
-            string[] month = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
+            var amount = implementation.ShareOfThemeForMonth();
 
             chartColumn.ChartAreas[0].AxisX.Interval = 1;
 
-            for (int i = 1; i <= 12; i++)
+            for (int i = 0; i < theme.Length; i++)
             {
-                chartColumn.Series[0].Points.AddXY(month[i - 1], implementation.ShareOfThemeForMonth(theme[0], i));
-                chartColumn.Series[1].Points.AddXY(month[i - 1], implementation.ShareOfThemeForMonth(theme[1], i));
-                chartColumn.Series[2].Points.AddXY(month[i - 1], implementation.ShareOfThemeForMonth(theme[2], i));
-                chartColumn.Series[3].Points.AddXY(month[i - 1], implementation.ShareOfThemeForMonth(theme[3], i));
-                chartColumn.Series[4].Points.AddXY(month[i - 1], implementation.ShareOfThemeForMonth(theme[4], i));
+                chartColumn.Series[0].Points.AddXY(theme[i], amount[theme[i]]);
             }
         }
 

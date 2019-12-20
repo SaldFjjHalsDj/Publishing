@@ -110,7 +110,7 @@ namespace Publishing.Data
 
 
         // Все еще переписываю
-        public Dictionary<string, int> ShareOfThemeForMonth(string theme, int month)
+        public Dictionary<string, int> ShareOfThemeForMonth()
         {
             List<DataSpace> data = new List<DataSpace>();
             Storage storage = new Storage();
@@ -120,10 +120,6 @@ namespace Publishing.Data
                 .GroupBy(m => m.Theme)
                 .Select(g => new { Theme = g.Key, Circulation = g.Sum(m => m.Circulation) })
                 .ToDictionary(key => key.Theme, value => value.Circulation);
-
-            var resul = data
-                .GroupBy(m => m.MonthOfPublishing);
-
 
             return result;
         }

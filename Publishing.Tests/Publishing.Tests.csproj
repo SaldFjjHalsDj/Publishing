@@ -57,6 +57,9 @@
     <Compile Include="ImplementationTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="data.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
