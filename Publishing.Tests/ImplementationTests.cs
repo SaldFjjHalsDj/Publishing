@@ -63,7 +63,14 @@ namespace Publishing.Tests
         {
             // Arrange
 
-            var result = 4;
+            Dictionary<string, double> result = new Dictionary<string, double>()
+            {
+                {"П", 9172800.0},
+                {"Н", 26920800.0},
+                {"У", 37500000.0},
+                {"Х", 38454056.0 },
+                {"И", 216604547.0},
+            };
 
             // Action
 
@@ -83,11 +90,16 @@ namespace Publishing.Tests
 
             // Arrange
 
-            int result = 81068;
+            Dictionary<string, int> result = new Dictionary<string, int>()
+            {
+                {"Д", 12560},
+                {"В", 81068},
+                {"Ю", 116993},
+            };
 
             //Action
 
-            var inf = Implementation.AmountOfCirculationByTheme(age);
+            var inf = Implementation.AmountOfCirculationByTheme();
 
             // Assert
             

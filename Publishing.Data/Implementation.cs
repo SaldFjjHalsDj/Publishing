@@ -27,43 +27,26 @@ namespace Publishing.Data
             Storage storage = new Storage();
             data = storage.Load();
 
-            //var result = data
-            //    .Where(info => info.Theme == theme)
-            //    .OrderBy(g => g.Price)
-            //    .ToList();
+            Dictionary<string, double> result = data
+                .GroupBy(x => x.Theme)
+                .Select(g => new { Theme = g.Key, Sum = g.Sum(p => p.TotalSum) })
+                .OrderBy(x => x.Sum)
+                .ToDictionary(key => key.Theme, value => value.Sum);
 
-            var res = data
-                .Select(info => info.Theme)
-                .Distinct()
-                .ToArray() as string[];
-
-            Dictionary<string, double> rest = new Dictionary<string, double>(res.Length);
-
-            for (int i= 0; i < res.Length; i++)
-            {
-                var mis = data
-                    .Where(info => info.Theme == res[i])
-                    .Select(g => g.TotalSum)
-                    .Sum();
-
-                rest.Add(res[i], mis);
-            };
-
-            rest.OrderBy(x => x.Value);
-
-            return rest;
+            return result;
         }
 
-        public int AmountOfCirculationByTheme(string age)
+        public Dictionary<string, int> AmountOfCirculationByTheme()
         {
             List<DataSpace> data = new List<DataSpace>();
             Storage storage = new Storage();
             data = storage.Load();
 
-            var result = data
-                .Where(info => info.Age == age)
-                .Select(m => m.Circulation)
-                .Sum();
+            Dictionary<string, int> result = data
+                .GroupBy(x => x.Age)
+                .Select(g => new { Age = g.Key, Circulation = g.Sum(p => p.Circulation) })
+                .OrderBy(x => x.Circulation)
+                .ToDictionary(key => key.Age, value => value.Circulation);
 
             return result;
         }

@@ -30,7 +30,6 @@ namespace Publishing.FormsUI
             Information.AutoResizeColumns();
 
             string[] ageNames = { "Детская", "Юношеская", "Взрослая" };
-
             AgeComboBox.Items.AddRange(ageNames);
 
             string[] theme = { "Учебная", "Художественная", "Публицистическая", "Искусство", "Научно-популярная" };
@@ -40,8 +39,9 @@ namespace Publishing.FormsUI
             MonthComboBox.Items.AddRange(month);
 
             comboBoxForMonth.Items.AddRange(month);
-
-            comboBoxColumn.Items.AddRange(month);
+            //comboBoxColumn.Items.AddRange(month);
+            comboGroup.Items.AddRange(ageNames);
+            comboJanre.Items.AddRange(theme);
 
         }
 
@@ -97,7 +97,7 @@ namespace Publishing.FormsUI
             var data = storage.Load();
             chartPie.Series[0].Points.Clear();
 
-            string[] theme = { "Уxt", "Х", "П", "И", "Н" };
+            string[] theme = { "У", "Х", "П", "И", "Н" };
 
 
             for (int i = 0; i < 5; i++)
@@ -118,7 +118,6 @@ namespace Publishing.FormsUI
             string[] theme = { "У", "Х", "П", "И", "Н" };
 
             string[] month = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
-
 
             chartColumn.ChartAreas[0].AxisX.Interval = 1;
 
@@ -154,6 +153,30 @@ namespace Publishing.FormsUI
         private void buttonDelete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonGetInfo_Click(object sender, EventArgs e)
+        {
+            var info = storage.Load();
+            Information.DataSource = null;
+            Information.DataSource = implementation.GetInformation(comboGroup.Text.ToString()[0].ToString(), 
+                comboJanre.Text.ToString()[0].ToString());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SecondInfo.DataSource = null;
+            var inf = implementation.SortByHigherTotalSum().Select(i => new { Theme = i.Key, TotalSum = i.Value }).ToList();
+            SecondInfo.DataSource = inf;
+            SecondInfo.AutoResizeColumns();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SecondInfo.DataSource = null;
+            var inf = implementation.AmountOfCirculationByTheme().Select(i => new { Age = i.Key, Circulation = i.Value }).ToList();
+            SecondInfo.DataSource = inf;
+            SecondInfo.AutoResizeColumns();
         }
     }
 }
